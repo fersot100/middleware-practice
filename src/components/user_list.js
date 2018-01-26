@@ -3,18 +3,21 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class UserList extends Component {
+
     componentWillMount(){
         this.props.fetchUsers();
     }
+
     renderUser(user){
         return(
-            <div className="card card-block" key={user.name}>
+            <div className="card card-block" key={user.id}>
                 <h4 className="card-title">{user.name}</h4>
-                <p className="card-text">{user.company || 'Company Unavailable'}</p>
-                <a className="btn btn-primary">{user.email || 'email@server.weebs'}</a>
+                <p className="card-text">{user.company.name || 'Company Unavailable'}</p>
+                <a className="btn btn-primary" href={user.website}>website</a>
              </div>
         )
     }
+
     render() {
         return (
             <div className="user-list">
